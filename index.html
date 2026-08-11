@@ -1,74 +1,63 @@
-// NC‑6‑Fach‑Vector‑Engine
-const NC6 = {
-  1: { id: "◆", name: "Ursprung",     vector: () => console.log("◆ Ursprung aktiviert") },
-  2: { id: "◉", name: "Ursache",      vector: () => console.log("◉ Ursache (A) aktiviert") },
-  3: { id: "◎", name: "Wirkung",      vector: () => console.log("◎ Wirkung (B) aktiviert") },
-  4: { id: "▣", name: "Continuum",    vector: () => console.log("▣ Continuum (C) aktiviert") },
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>RUMRUM – Ereignishorizont</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  // Layer 5 — rumumrum Orbit
-  5: { 
-    id: "⚚", 
-    name: "Orbit / rumumrum",
-    vector: () => {
-      console.log("⚚ rumumrum Orbit gestartet: O→H→O→H");
-      document.querySelector('[data-layer="5"]').classList.add("orbit-run");
-    }
-  },
-
-  // Layer 6 — ID.ICOME Summation
-  6: { 
-    id: "Σ", 
-    name: "Summation / ID.ICOME",
-    vector: () => {
-      console.log("Σ ID.ICOME aktiviert: Σ◉◎▣⚚");
-      document.querySelector('[data-layer="6"]').classList.add("id-icome");
-    }
+<style>
+  body{
+    margin:0;padding:2rem;
+    background:#000;color:#fff;
+    font-family:system-ui,sans-serif;
+    text-align:center;
   }
-};
 
-// Aktiviert alle 6 Vectoren nacheinander
-function NC6_activateAll() {
-  for (let i = 1; i <= 6; i++) {
-    NC6[i].vector();
+  .wrap{max-width:900px;margin:0 auto}
+
+  .title{font-size:40px;margin-bottom:18px}
+
+  .nc6 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
   }
-}
 
-// Direkt beim Laden starten
-window.addEventListener("load", () => {
-  NC6_activateAll();
-});
-.orbit-run {
-  border-color: #7dd3fc;
-  animation: orbitPulse 1.2s infinite alternate;
-}
+  .nc-line {
+    padding: 10px 14px;
+    background: #0b0b0b;
+    border: 1px solid #222;
+    font-size: 18px;
+    color: #7dd3fc;
+    font-family: system-ui, sans-serif;
+  }
 
-@keyframes orbitPulse {
-  from { background:#0b0b0b; }
-  to   { background:#112233; }
-}
+  /* Orbit Animation */
+  .orbit-canvas {
+    margin:20px auto;
+    animation: orbitSpin 4s linear infinite;
+  }
 
-.id-icome {
-  border-color:#ffcc00;
-  background:#332200;
-}
-Σ◉◎▣⚚
-O → H → O → H
+  @keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
 
-.nc6 {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 20px 0;
-}
+  .orbit-run {
+    border-color:#7dd3fc;
+    animation: orbitPulse 1.2s infinite alternate;
+  }
 
-.nc-line {
-  padding: 10px 14px;
-  background: #0b0b0b;
-  border: 1px solid #222;
-  font-size: 18px;
-  color: #7dd3fc;
-  font-family: system-ui, sans-serif;
-}
+  @keyframes orbitPulse {
+    from { background:#0b0b0b; }
+    to   { background:#112233; }
+  }
+</style>
+</head>
+
+<body>
+
 <div class="wrap">
   <div class="title">RUMRUM – Ereignishorizont</div>
 
@@ -78,6 +67,31 @@ O → H → O → H
     <div class="nc-line" data-layer="2">◉ Layer 2 — Ursache</div>
     <div class="nc-line" data-layer="3">◎ Layer 3 — Wirkung</div>
     <div class="nc-line" data-layer="4">▣ Layer 4 — Continuum</div>
-    <div class="nc-line" data-layer="5">⚚ Layer 5 — Orbit / rumumrum</div>
+    <div class="nc-line orbit-run" data-layer="5">⚚ Layer 5 — Orbit / rumumrum</div>
     <div class="nc-line" data-layer="6">Σ Layer 6 — Summation / ID.ICOME</div>
   </div>
+
+  <!-- Orbit Canvas -->
+  <canvas id="orbitCanvas" width="240" height="240" class="orbit-canvas"></canvas>
+</div>
+
+<script type="module">
+  /* ID.ICOME Modul */
+  const ID_ICOME = {
+    A: "◉",
+    B: "◎",
+    C: "▣",
+    Orbit: "⚚",
+    Sum: "Σ",
+    Start: "◆",
+
+    rum: "O→H",
+    rumrum: "O→H→O",
+    rumumrum: "O→H→O→H"
+  };
+
+  /* NC6 Vector Engine */
+  const NC6 = {
+    1: { id: ID_ICOME.Start, name: "Ursprung" },
+    2: { id: ID_ICOME.A,     name: "Ursache" },
+    3: { id: ID_ICOME.B,     name: "Wirkung"
