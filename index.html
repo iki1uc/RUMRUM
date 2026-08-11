@@ -1,11 +1,59 @@
-<div class="nc6">
-  <div class="nc-line" data-layer="1">◆ Layer 1 — Ursprung</div>
-  <div class="nc-line" data-layer="2">◉ Layer 2 — Ursache</div>
-  <div class="nc-line" data-layer="3">◎ Layer 3 — Wirkung</div>
-  <div class="nc-line" data-layer="4">▣ Layer 4 — Continuum</div>
-  <div class="nc-line" data-layer="5">⚚ Layer 5 — Orbit / rumumrum</div>
-  <div class="nc-line" data-layer="6">Σ Layer 6 — Summation / ID.ICOME</div>
-</div>
+// NC‑6‑Fach‑Vector‑Engine
+const NC6 = {
+  1: { id: "◆", name: "Ursprung",     vector: () => console.log("◆ Ursprung aktiviert") },
+  2: { id: "◉", name: "Ursache",      vector: () => console.log("◉ Ursache (A) aktiviert") },
+  3: { id: "◎", name: "Wirkung",      vector: () => console.log("◎ Wirkung (B) aktiviert") },
+  4: { id: "▣", name: "Continuum",    vector: () => console.log("▣ Continuum (C) aktiviert") },
+
+  // Layer 5 — rumumrum Orbit
+  5: { 
+    id: "⚚", 
+    name: "Orbit / rumumrum",
+    vector: () => {
+      console.log("⚚ rumumrum Orbit gestartet: O→H→O→H");
+      document.querySelector('[data-layer="5"]').classList.add("orbit-run");
+    }
+  },
+
+  // Layer 6 — ID.ICOME Summation
+  6: { 
+    id: "Σ", 
+    name: "Summation / ID.ICOME",
+    vector: () => {
+      console.log("Σ ID.ICOME aktiviert: Σ◉◎▣⚚");
+      document.querySelector('[data-layer="6"]').classList.add("id-icome");
+    }
+  }
+};
+
+// Aktiviert alle 6 Vectoren nacheinander
+function NC6_activateAll() {
+  for (let i = 1; i <= 6; i++) {
+    NC6[i].vector();
+  }
+}
+
+// Direkt beim Laden starten
+window.addEventListener("load", () => {
+  NC6_activateAll();
+});
+.orbit-run {
+  border-color: #7dd3fc;
+  animation: orbitPulse 1.2s infinite alternate;
+}
+
+@keyframes orbitPulse {
+  from { background:#0b0b0b; }
+  to   { background:#112233; }
+}
+
+.id-icome {
+  border-color:#ffcc00;
+  background:#332200;
+}
+Σ◉◎▣⚚
+O → H → O → H
+
 .nc6 {
   display: flex;
   flex-direction: column;
