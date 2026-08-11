@@ -1,31 +1,35 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>4u – Response Layer</title>
-
-<style>
-body{background:#000;color:#0f0;font-family:monospace;padding:20px;}
-pre{background:#111;padding:20px;border:1px solid #333;}
-button{background:#111;color:#0f0;border:1px solid #333;padding:8px 16px;}
-</style>
-</head>
-
-<body>
-
-<h1>4u – Response Layer</h1>
-
-<button onclick="show()">RESPO</button>
-
-<pre id="out">Bereit...</pre>
-
-<script type="module">
-import { respo } from "./respo.js";
-
-function show(){
-  out.textContent = JSON.stringify(respo, null, 2);
+<div class="nc6">
+  <div class="nc-line" data-layer="1">◆ Layer 1 — Ursprung</div>
+  <div class="nc-line" data-layer="2">◉ Layer 2 — Ursache</div>
+  <div class="nc-line" data-layer="3">◎ Layer 3 — Wirkung</div>
+  <div class="nc-line" data-layer="4">▣ Layer 4 — Continuum</div>
+  <div class="nc-line" data-layer="5">⚚ Layer 5 — Orbit / rumumrum</div>
+  <div class="nc-line" data-layer="6">Σ Layer 6 — Summation / ID.ICOME</div>
+</div>
+.nc6 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
 }
-</script>
 
-</body>
-</html>
+.nc-line {
+  padding: 10px 14px;
+  background: #0b0b0b;
+  border: 1px solid #222;
+  font-size: 18px;
+  color: #7dd3fc;
+  font-family: system-ui, sans-serif;
+}
+<div class="wrap">
+  <div class="title">RUMRUM – Ereignishorizont</div>
+
+  <!-- NC‑6‑Fach‑Block -->
+  <div class="nc6">
+    <div class="nc-line" data-layer="1">◆ Layer 1 — Ursprung</div>
+    <div class="nc-line" data-layer="2">◉ Layer 2 — Ursache</div>
+    <div class="nc-line" data-layer="3">◎ Layer 3 — Wirkung</div>
+    <div class="nc-line" data-layer="4">▣ Layer 4 — Continuum</div>
+    <div class="nc-line" data-layer="5">⚚ Layer 5 — Orbit / rumumrum</div>
+    <div class="nc-line" data-layer="6">Σ Layer 6 — Summation / ID.ICOME</div>
+  </div>
